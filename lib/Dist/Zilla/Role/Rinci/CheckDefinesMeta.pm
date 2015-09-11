@@ -18,6 +18,7 @@ sub check_dist_defines_rinci_meta {
     my $files = $self->zilla->find_files(':InstallModules');
 
     local @INC = ("lib", @INC);
+    $res = 0;
     for my $file (@$files) {
         my $name = $file->name;
         $name =~ s!\Alib/!!;
@@ -28,7 +29,6 @@ sub check_dist_defines_rinci_meta {
             last;
         }
     }
-    $res = 0;
 
     $res;
 }
