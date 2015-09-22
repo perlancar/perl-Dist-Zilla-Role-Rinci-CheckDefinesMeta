@@ -1,5 +1,11 @@
 Revision history for Dist-Zilla-Role-Rinci-CheckDefinesMeta
 
+0.02    2015-09-22 (PERLANCAR)
+
+	- Also check scripts by using PPI, checking for assignment to
+	  $SPEC{...}.
+
+
 0.01    2015-09-11 (PERLANCAR)
 
         - First release.
