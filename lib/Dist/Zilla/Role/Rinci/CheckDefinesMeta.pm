@@ -22,6 +22,7 @@ sub check_dist_defines_rinci_meta {
         local @INC = ("lib", @INC);
         for my $file (@$files) {
             my $name = $file->name;
+            next if $name =~ /\.pod\z/i;
             $name =~ s!\Alib/!!;
             require $name;
             my $pkg = $name; $pkg =~ s/\.pm\z//; $pkg =~ s!/!::!g;
