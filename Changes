@@ -1,5 +1,10 @@
 Revision history for Dist-Zilla-Role-Rinci-CheckDefinesMeta
 
+0.03    2015-09-25 (PERLANCAR)
+
+	- Exclude .pod from checking.
+
+
 0.02    2015-09-22 (PERLANCAR)
 
 	- Also check scripts by using PPI, checking for assignment to
