@@ -40,14 +40,17 @@ sub check_dist_defines_rinci_meta {
         require PPI::Document;
         my $files = $self->zilla->find_files(':ExecFiles');
         for my $file (@$files) {
-            my $path;
-            if ($file->isa("Dist::Zilla::File::OnDisk")) {
-                $path = $file->name;
-            } else {
-                my ($temp_fh, $temp_path) = tempfile();
+            my $path = do {
+                # even though file is a DZF:OnDisk, name() won't always be the
+                # actual path (e.g. when we use DZP:AddFile::FromFS which
+                # creates a DZF:OnDisk object which points to src but then
+                # re-set the name to dest), so in any case we need to write to
+                # tempfile first
+                my ($temp_fh, $temp_path) = File::Temp::tempfile();
                 print $temp_fh $file->content;
-                $path = $temp_path;
-            }
+                $temp_path;
+            };
+            #$self->log(["path=%s (exists? %s)", $path, ((-f $path) ? 1:0)]);
             my $doc = PPI::Document->new($path);
             for my $node ($doc->children) {
                 next unless $node->isa("PPI::Statement");
