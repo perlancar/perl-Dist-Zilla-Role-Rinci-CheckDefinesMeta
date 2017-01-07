@@ -1,5 +1,3 @@
-Revision history for Dist-Zilla-Role-Rinci-CheckDefinesMeta
-
 0.04    2016-01-17 (PERLANCAR)
 
 	- [Bugfix] We need to always create a tempfile from a DZF
