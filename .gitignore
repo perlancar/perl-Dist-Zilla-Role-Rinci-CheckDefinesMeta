@@ -2,3 +2,4 @@ Dist-Zilla-Role-Rinci-CheckDefinesMeta-*
 .build
 *~
 nytprof*
+.DS_Store
